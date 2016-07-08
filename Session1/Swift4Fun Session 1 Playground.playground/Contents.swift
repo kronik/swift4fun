@@ -10,7 +10,7 @@ for x in 0..<100 {
 }
 
 // It helps deeper understand your code:
-for x in (-2.0).stride(through: 2, by: 0.1) {
+for x in (-2.0).stride(through: 2, by: 0.01) {
     pow((1.0 - pow((fabs(x) - 1.0), 2.0)), 0.5)
     acos(1.0 - fabs(x)) - M_PI
 }
