@@ -54,7 +54,7 @@ class ViewController: UIViewController, KeyboardStateDelegate, DataSourceDelegat
         
         let dataSource = TableViewDataSource()
         
-        dataSource.registerView(tableView)
+        dataSource.registerView(tableView, eventManager: EventsManager())
         dataSource.delegate = self
         
         self.dataSource = dataSource

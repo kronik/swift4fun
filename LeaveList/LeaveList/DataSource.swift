@@ -12,7 +12,7 @@ import RealmSwift
 import EZSwiftExtensions
 
 protocol DataSource {
-    func registerView(view: UIView)
+    func registerView(view: UIView, eventManager: EventsManager)
     func reload()
     func clean()
     func updateKeyword(keyword: String)
@@ -27,6 +27,7 @@ protocol DataSourceDelegate {
 class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
                            ListEntryCellDelegate, DataSource {
     
+    private var eventManager: EventsManager?
     private var dataCache = [String: String]()
     private var tableView: UITableView?
     private var items: Results<ListEntry>?
@@ -62,7 +63,7 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
         self.keyword = keyword
     }
 
-    func registerView(view: UIView) {
+    func registerView(view: UIView, eventManager: EventsManager) {
         guard let tableView = view as? UITableView else { return }
         
         tableView.backgroundColor = UIColor.whiteColor()
@@ -75,6 +76,7 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, w: tableView.frame.size.width, h: 1))
         
         self.tableView = tableView
+        self.eventManager = eventManager
     }
     
     func reload() {
@@ -189,6 +191,8 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
         Model.save(listEntry)
         
         tableView?.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        
+        eventManager?.registerEventForListEntry(listEntry.key)
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {

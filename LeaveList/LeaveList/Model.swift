@@ -14,7 +14,7 @@ public typealias DataDidChangeHandler = () -> Void
 public class Model {
     static let sharedInstance = Model()
     
-    private let realmDbSchemaVersion: UInt64 = 2
+    private let realmDbSchemaVersion: UInt64 = 3
     
     private var updateToken: NotificationToken?
     
@@ -164,7 +164,73 @@ public class ListEntry: ModelObject {
         
         return results
     }
+    
+//    public class func loadAllEvents() -> Results<ListEntryEvent>? {
+//        let realm = try! Realm()
+//        let filter = NSPredicate(format: "listEntryKey == %@ AND isDeleted == 0", key)
+//        let results = realm.objects(ListEntryEvent).filter(filter).sorted("createdAt", ascending: true)
+//        
+//        return results
+//    }
+
 }
+
+public class ListEntryEvent: ModelObject {
+    dynamic var listEntryKey = ""
+    dynamic var text = ""
+    dynamic var longitude: Double = 0.0
+    dynamic var latitude: Double = 0.0
+    
+    public override func copyToSave() -> ModelObject {
+        if key.isEmpty {
+            key = String.uniqueString()
+            
+            return self
+        }
+        
+        let newObject = ListEntryEvent()
+        
+        newObject.key               = key
+        newObject.listEntryKey      = listEntryKey
+        newObject.isDeleted         = isDeleted
+        newObject.text              = text
+        newObject.longitude         = longitude
+        newObject.latitude          = latitude
+        newObject.createdAt         = createdAt
+        
+        return newObject
+    }
+    
+    public class func loadByKey(key: String) -> ListEntryEvent? {
+        var filter = NSPredicate(format: "key == %@ AND isDeleted == 0", key)
+        let realm = try! Realm()
+        var record: ListEntryEvent?
+        
+        var results = realm.objects(ListEntryEvent).filter(filter).sorted("createdAt", ascending: true)
+        
+        if results.count == 0 {
+            filter = NSPredicate(format: "key == %@", key)
+            results = realm.objects(ListEntryEvent).filter(filter).sorted("createdAt", ascending: true)
+        }
+        
+        record = results.first
+        
+        if let recordValue = record {
+            record = recordValue.copyToSave() as? ListEntryEvent
+        }
+        
+        return record
+    }
+    
+    public class func loadAllEventsByListEntryKey(listEntryKey: String) -> Results<ListEntryEvent>? {
+        let realm = try! Realm()
+        let filter = NSPredicate(format: "listEntryKey == %@ AND isDeleted == 0", listEntryKey)
+        let results = realm.objects(ListEntryEvent).filter(filter).sorted("createdAt", ascending: true)
+        
+        return results
+    }
+}
+
 
 extension Model {
     static var bundleId: String {

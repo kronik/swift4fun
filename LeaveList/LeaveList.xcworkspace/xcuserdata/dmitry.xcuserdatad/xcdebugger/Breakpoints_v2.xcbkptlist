@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeaveList/DataSource.swift"
-            timestampString = "491885322.385014"
+            timestampString = "492604465.472554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeaveList/DataSource.swift"
-            timestampString = "491885322.385014"
+            timestampString = "492604465.472554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "addRecord(_:date:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeaveList/DataSource.swift"
-            timestampString = "491885322.385014"
+            timestampString = "492604465.472554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "onSaveTimer(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeaveList/DataSource.swift"
-            timestampString = "491885322.385014"
+            timestampString = "492604465.472554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeaveList/DataSource.swift"
-            timestampString = "491885322.385014"
+            timestampString = "492604465.472554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "reloadData(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeaveList/DataSource.swift"
-            timestampString = "491885322.385014"
+            timestampString = "492604465.472554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,13 +282,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeaveList/DataSource.swift"
-            timestampString = "491885312.749303"
+            timestampString = "492604465.472554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "didUpdateDescriptionForCellAtIndexPath(_:textView:text:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LeaveList/EventsManager.swift"
+            timestampString = "492604480.867239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "registerEventForListEntry(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LeaveList.EventsManager.registerEventForListEntry (Swift.String) -&gt; ()"
+                  moduleName = "LeaveList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitry/work/swift4fun/LeaveList/LeaveList/EventsManager.swift"
+                  timestampString = "492604488.370842"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LeaveList.EventsManager.(registerEventForListEntry (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "LeaveList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitry/work/swift4fun/LeaveList/LeaveList/EventsManager.swift"
+                  timestampString = "492604488.371038"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

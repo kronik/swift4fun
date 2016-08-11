@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A3AB5B61D5C8A2D00D05F23 /* EventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3AB5B51D5C8A2D00D05F23 /* EventsManager.swift */; };
 		0A43540A1D379592002F4AD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4354091D379592002F4AD6 /* AppDelegate.swift */; };
 		0A43540C1D379592002F4AD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A43540B1D379592002F4AD6 /* ViewController.swift */; };
 		0A43541C1D3796C4002F4AD6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A43541B1D3796C4002F4AD6 /* Model.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		052A27471FE0260583F353C2 /* Pods_LeaveList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeaveList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A3AB5B51D5C8A2D00D05F23 /* EventsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsManager.swift; sourceTree = "<group>"; };
 		0A4354061D379592002F4AD6 /* LeaveList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeaveList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A4354091D379592002F4AD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A43540B1D379592002F4AD6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				0A43541F1D37BC72002F4AD6 /* Layout.swift */,
 				0A4354361D38D29C002F4AD6 /* Config.swift */,
 				0AC28D211D50AD2F0069A0E8 /* DataSource.swift */,
+				0A3AB5B51D5C8A2D00D05F23 /* EventsManager.swift */,
 			);
 			path = LeaveList;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				0A4354371D38D29C002F4AD6 /* Config.swift in Sources */,
 				0A43541C1D3796C4002F4AD6 /* Model.swift in Sources */,
 				0A4354291D389635002F4AD6 /* Assets.swift in Sources */,
+				0A3AB5B61D5C8A2D00D05F23 /* EventsManager.swift in Sources */,
 				0A43542A1D389635002F4AD6 /* Colors.swift in Sources */,
 				0A4354201D37BC72002F4AD6 /* Layout.swift in Sources */,
 				0A43540C1D379592002F4AD6 /* ViewController.swift in Sources */,
