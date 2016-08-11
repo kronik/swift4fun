@@ -192,6 +192,7 @@
 				TargetAttributes = {
 					0A4354051D379592002F4AD6 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7HCL9D4WBY;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -450,10 +451,13 @@
 			baseConfigurationReference = D312FEF8C18F63976800D222 /* Pods-LeaveList.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/LeaveList/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.leave-list.ios-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.leave-list.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LeaveList/Other-Sources/LeaveList-Bridging-Header.h";
 			};
 			name = Debug;
@@ -463,10 +467,13 @@
 			baseConfigurationReference = 0EB19E454AFC453409DC8CA6 /* Pods-LeaveList.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/LeaveList/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.leave-list.ios-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.leave-list.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LeaveList/Other-Sources/LeaveList-Bridging-Header.h";
 			};
 			name = Release;
