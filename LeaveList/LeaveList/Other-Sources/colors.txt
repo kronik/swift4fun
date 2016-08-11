@@ -1,0 +1,10 @@
+MainColor      : 0x9E9E9E
+LightColor     : 0xFAFAFA
+DarkColor      : 0x212121
+MiddleColor    : 0xF5F5F5
+White          : 0xF5F3F7
+Black          : 0x000000
+Grey           : 0x444A59
+LightGrey      : 0xB2B2C2
+Red            : 0xFF0060
+DarkGrey       : 0x222324

@@ -1,0 +1,39 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, '8.0'
+
+target 'LeaveList' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for LeaveList
+  pod 'Realm'
+  pod 'RealmSwift'
+
+  pod 'DynamicButton'
+  pod 'DateTools'      # Datetime heavy lifting
+  pod 'EZSwiftExtensions'
+  pod 'Then'
+  pod 'Keyboardy'
+  pod 'SwiftLocation'
+  pod 'DeepLinkKit'
+  pod 'Appz'
+  pod 'LMDistanceCalculator'
+  pod 'SwiftLocation'
+  pod 'Dispatch'
+
+end
+
+# After every installation, copy the license and settings plists over to our project
+post_install do |installer|
+    require 'fileutils'
+    
+    acknowledgements_plist = 'Pods/Target Support Files/Pods/Pods-Acknowledgements.plist'
+    if Dir.exists?('LeaveList/Resources/Settings.bundle') && File.exists?(acknowledgements_plist)
+        FileUtils.cp(acknowledgements_plist, 'LeaveList/Resources/Settings.bundle/Acknowledgements.plist')
+    end
+    
+    environment_file = 'Pods/Target Support Files/Pods/Pods-environment.h'
+    if File.exists?(environment_file)
+        FileUtils.cp(environment_file, 'LeaveList/Other-Sources/Pods-Environment.h')
+    end
+end
