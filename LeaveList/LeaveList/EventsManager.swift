@@ -9,31 +9,45 @@
 import Foundation
 import SwiftLocation
 import CoreLocation
+import DateTools
 
 class EventsManager {
-    private var lastLocation: CLLocation?
-    private var keys = [String]()
+    private var lastLocation: CLLocation? {
+        didSet {
+            lastLocationTimestamp = NSDate()
+        }
+    }
+    
+    private var lastLocationTimestamp = NSDate.distantPast()
+    private var lastLocationRequest: LocationRequest?
     
     init() {
-        
     }
     
     func registerEventForListEntry(key: String) {
-        LocationManager.shared.observeLocations(.Neighborhood, frequency: .OneShot, onSuccess: { location in
-            // location contain your CLLocation object
-            self.lastLocation = location
-            
-            let newRecord = ListEntryEvent()
-            
-            newRecord.text = ""
-            newRecord.listEntryKey = key
-            newRecord.longitude = location.coordinate.longitude
-            newRecord.latitude = location.coordinate.latitude
-            
-            Model.save(newRecord)
-
-        }) { error in
-            // Something went wrong. error will tell you what
+        if let location = lastLocation where lastLocationTimestamp.minutesAgo() <= 3 {
+            createEventForListEntry(key, location: location)
+        } else {
+            lastLocationRequest = LocationManager.shared.observeLocations(.House, frequency: .OneShot, onSuccess: { location in
+                // location contain your CLLocation object
+                self.lastLocation = location
+                self.createEventForListEntry(key, location: location)
+                self.lastLocationRequest = nil
+            }) { error in
+                // Something went wrong. error will tell you what
+                print(error)
+            }
         }
+    }
+    
+    func createEventForListEntry(key: String, location: CLLocation) {
+        let newRecord = ListEntryEvent()
+        
+        newRecord.text = ""
+        newRecord.listEntryKey = key
+        newRecord.longitude = location.coordinate.longitude
+        newRecord.latitude = location.coordinate.latitude
+        
+        Model.save(newRecord)
     }
 }
