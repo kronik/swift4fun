@@ -41,8 +41,6 @@ class ViewController: UIViewController, KeyboardStateDelegate, DataSourceDelegat
         tableView.tableHeaderView = searchBar
         tableView.frame = view.bounds
         tableView.contentOffset = CGPoint(x: 0, y: searchBar!.frame.size.height)
-        tableView.contentInset = UIEdgeInsets(top: -searchBar!.frame.size.height, left: 0, bottom: 0, right: 0)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
 
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: tr(.PullToClean))
