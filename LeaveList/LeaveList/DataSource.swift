@@ -174,7 +174,7 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
         
         tableView.beginUpdates()
         
-        listEntry.delete()
+        listEntry.markAsDeleted()
         
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         

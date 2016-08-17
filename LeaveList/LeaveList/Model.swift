@@ -90,7 +90,7 @@ public class ModelObject: Object {
         return self
     }
     
-    public func delele() {
+    public func markAsDeleted() {
         let record = copyToSave()
         
         record.isDeleted = true
@@ -180,13 +180,13 @@ public class ListEntry: ModelObject {
         
         Model.save(record)
     }
-//    public class func loadAllEvents() -> Results<ListEntryEvent>? {
-//        let realm = try! Realm()
-//        let filter = NSPredicate(format: "listEntryKey == %@ AND isDeleted == 0", key)
-//        let results = realm.objects(ListEntryEvent).filter(filter).sorted("createdAt", ascending: true)
-//        
-//        return results
-//    }
+    public func loadAllEvents() -> Results<ListEntryEvent>? {
+        let realm = try! Realm()
+        let filter = NSPredicate(format: "listEntryKey == %@ AND isDeleted == 0", key)
+        let results = realm.objects(ListEntryEvent).filter(filter).sorted("createdAt", ascending: true)
+        
+        return results
+    }
 
 }
 
