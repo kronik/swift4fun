@@ -170,13 +170,11 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
             return
         }
         
-        let listEntry = items![indexPath.row].copyToSave()
+        let listEntry = items![indexPath.row]
         
         tableView.beginUpdates()
         
-        listEntry.isDeleted = true
-        
-        Model.save(listEntry)
+        listEntry.delete()
         
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
@@ -184,12 +182,10 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
     }
     
     func markEntryDone(indexPath: NSIndexPath) {
-        let listEntry = items![indexPath.row].copyToSave() as! ListEntry
+        let listEntry = items![indexPath.row]
         
-        listEntry.lastActionDate = NSDate()
-        
-        Model.save(listEntry)
-        
+        listEntry.markAsDone()
+                
         tableView?.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
         eventManager?.registerEventForListEntry(listEntry.key)

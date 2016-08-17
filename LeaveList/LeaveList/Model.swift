@@ -90,6 +90,14 @@ public class ModelObject: Object {
         return self
     }
     
+    public func delele() {
+        let record = copyToSave()
+        
+        record.isDeleted = true
+        
+        Model.save(record)
+    }
+    
     public override func isEqual(object: AnyObject?) -> Bool {
         if let rhs = object as? ModelObject {
             return key == rhs.key
@@ -165,6 +173,13 @@ public class ListEntry: ModelObject {
         return results
     }
     
+    public func markAsDone() {
+        let record = self.copyToSave() as! ListEntry
+        
+        record.lastActionDate = NSDate()
+        
+        Model.save(record)
+    }
 //    public class func loadAllEvents() -> Results<ListEntryEvent>? {
 //        let realm = try! Realm()
 //        let filter = NSPredicate(format: "listEntryKey == %@ AND isDeleted == 0", key)
