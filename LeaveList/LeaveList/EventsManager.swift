@@ -19,7 +19,7 @@ class EventsManager {
     }
     
     private var lastLocationTimestamp = NSDate.distantPast()
-    private var lastLocationRequest: LocationRequest?
+    private var lastLocationRequest: Request?
     
     init() {
     }
@@ -28,14 +28,15 @@ class EventsManager {
         if let location = lastLocation where lastLocationTimestamp.minutesAgo() <= 3 {
             createEventForListEntry(key, location: location)
         } else {
-            lastLocationRequest = LocationManager.shared.observeLocations(.House, frequency: .OneShot, onSuccess: { location in
+            
+            
+            lastLocationRequest = Location.getLocation(withAccuracy: .House, frequency: .OneShot, onSuccess: { location in
                 // location contain your CLLocation object
                 self.lastLocation = location
                 self.createEventForListEntry(key, location: location)
                 self.lastLocationRequest = nil
-            }) { error in
+            }) { (location, error) in
                 // Something went wrong. error will tell you what
-                print(error)
             }
         }
     }
