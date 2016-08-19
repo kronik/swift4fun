@@ -18,11 +18,18 @@ class ViewController: UIViewController, KeyboardStateDelegate, DataSourceDelegat
     private var newContentViewCenterPoint = CGPointZero
     private var dataSource: DataSource?
     private var searchBar: UISearchBar?
+    private var eventManager: EventsManager?
     
     private var keyword: String = "" {
         didSet {
             dataSource?.updateKeyword(keyword)
         }
+    }
+    
+    convenience init(eventManager: EventsManager) {
+        self.init()
+        
+        self.eventManager = eventManager
     }
     
     private var refreshControl: UIRefreshControl!

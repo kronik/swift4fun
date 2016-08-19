@@ -14,6 +14,7 @@ import EZSwiftExtensions
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var eventManager = EventsManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
 
         initializeServices(launchOptions)
+        
+        if let options = launchOptions,
+            notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
+            handleLocalNotification(notification)
+        }
         
         return true
     }
@@ -54,10 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
              */
         }
+        
+        registerLocalNotifications()
     }
     
     func createRootViewController() -> UIViewController {
-        let controller = ViewController()
+        let controller = ViewController(eventManager: self.eventManager)
         
         controller.title = tr(.DontForgetTo)
         

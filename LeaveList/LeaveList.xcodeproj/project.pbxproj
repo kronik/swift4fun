@@ -21,6 +21,7 @@
 		0A4354371D38D29C002F4AD6 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4354361D38D29C002F4AD6 /* Config.swift */; };
 		0A4354411D38D7DF002F4AD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A4354391D38D7DE002F4AD6 /* InfoPlist.strings */; };
 		0A4354421D38D7DF002F4AD6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A43543B1D38D7DE002F4AD6 /* Localizable.strings */; };
+		0A52081A1D65C13B000E882B /* UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5208191D65C13B000E882B /* UserNotifications.swift */; };
 		0AC28D221D50AD2F0069A0E8 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC28D211D50AD2F0069A0E8 /* DataSource.swift */; };
 		E2FB511ABAAC1F7208E78796 /* Pods_LeaveList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052A27471FE0260583F353C2 /* Pods_LeaveList.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		0A43543E1D38D7DF002F4AD6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A43543F1D38D7DF002F4AD6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		0A4354401D38D7DF002F4AD6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0A5208191D65C13B000E882B /* UserNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotifications.swift; sourceTree = "<group>"; };
 		0AC28D211D50AD2F0069A0E8 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		0EB19E454AFC453409DC8CA6 /* Pods-LeaveList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeaveList.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeaveList/Pods-LeaveList.release.xcconfig"; sourceTree = "<group>"; };
 		D312FEF8C18F63976800D222 /* Pods-LeaveList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeaveList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeaveList/Pods-LeaveList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,10 +80,10 @@
 		0A4353FD1D379592002F4AD6 = {
 			isa = PBXGroup;
 			children = (
-				0A4354081D379592002F4AD6 /* LeaveList */,
-				0A4354071D379592002F4AD6 /* Products */,
-				048F23644CB08595EF2E525B /* Pods */,
 				E239A278B3392904C6D1CC11 /* Frameworks */,
+				0A4354081D379592002F4AD6 /* LeaveList */,
+				048F23644CB08595EF2E525B /* Pods */,
+				0A4354071D379592002F4AD6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +108,7 @@
 				0A4354361D38D29C002F4AD6 /* Config.swift */,
 				0AC28D211D50AD2F0069A0E8 /* DataSource.swift */,
 				0A3AB5B51D5C8A2D00D05F23 /* EventsManager.swift */,
+				0A5208191D65C13B000E882B /* UserNotifications.swift */,
 			);
 			path = LeaveList;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				0A43540C1D379592002F4AD6 /* ViewController.swift in Sources */,
 				0AC28D221D50AD2F0069A0E8 /* DataSource.swift in Sources */,
 				0A43540A1D379592002F4AD6 /* AppDelegate.swift in Sources */,
+				0A52081A1D65C13B000E882B /* UserNotifications.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

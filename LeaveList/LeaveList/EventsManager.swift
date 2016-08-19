@@ -21,15 +21,12 @@ class EventsManager {
     private var lastLocationTimestamp = NSDate.distantPast()
     private var lastLocationRequest: Request?
     
-    init() {
-    }
+    init() { }
     
     func registerEventForListEntry(key: String) {
         if let location = lastLocation where lastLocationTimestamp.minutesAgo() <= 3 {
             createEventForListEntry(key, location: location)
         } else {
-            
-            
             lastLocationRequest = Location.getLocation(withAccuracy: .House, frequency: .OneShot, onSuccess: { location in
                 // location contain your CLLocation object
                 self.lastLocation = location
