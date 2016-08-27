@@ -11,11 +11,10 @@ import DateTools
 import Then
 
 protocol ListEntryCellDelegate {
-    func didUpdateDescriptionForCellAtIndexPath(indexPath: NSIndexPath, textView: UITextView, text: String)
-    func didBeginEditing(textView: UITextView)
+    func requestEditing(textLabel: UILabel, indexPath: NSIndexPath)
 }
 
-class ListEntryCell: UITableViewCell, UITextViewDelegate {
+class ListEntryCell: UITableViewCell {
     class func heightForText(text: String) -> CGFloat {
         let size = text.size(UIFont.systemFontOfSize(layout.textSize),
                              width: layout.screenWidth - layout.timeStampWidth - layout.textViewPadding - 15)
@@ -23,30 +22,15 @@ class ListEntryCell: UITableViewCell, UITextViewDelegate {
         return ceil(max(size.height + layout.textViewPadding * 2 , layout.tableViewCellHeight))
     }
     
-    private let titleView = VerticallyCenteredTextView().then {
-        let toolBar = UIToolbar()
-        
-        toolBar.barStyle = UIBarStyle.Default
-        toolBar.translucent = true
-        
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: $0,
-            action: #selector(UITextView.resignFirstResponder))
-        
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        
-        toolBar.setItems([spaceButton, doneButton], animated: false)
-        toolBar.userInteractionEnabled = true
-        toolBar.sizeToFit()
-        
+    let titleView = UILabel().then {
         $0.backgroundColor = UIColor.clearColor()
         $0.font = UIFont.systemFontOfSize(layout.textSize)
         $0.textAlignment = .Left
         $0.textColor = UIColor.darkGrayColor()
-        $0.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        $0.scrollEnabled = false
         $0.autoresizesSubviews = false
         $0.autoresizingMask = .None
-        $0.inputAccessoryView = toolBar
+        $0.numberOfLines = 0
+        $0.lineBreakMode = .ByWordWrapping
     }
     
     private let dateLabel = UILabel().then {
@@ -71,8 +55,7 @@ class ListEntryCell: UITableViewCell, UITextViewDelegate {
     
     var title = "" {
         didSet {
-            titleView.text = title
-            updateTextView()
+            titleView.text = title            
         }
     }
     
@@ -89,9 +72,9 @@ class ListEntryCell: UITableViewCell, UITextViewDelegate {
     }
     
     func tryStartEditing() {
-        if titleView.text.length == 0 {
-            titleView.becomeFirstResponder()
-        }
+//        if titleView.text.length == 0 {
+//            titleView.becomeFirstResponder()
+//        }
     }
     
     override func layoutSubviews() {
@@ -100,11 +83,15 @@ class ListEntryCell: UITableViewCell, UITextViewDelegate {
         if !isInitialised {
             isInitialised = true
             
-            titleView.delegate = self
-            
             contentView.addSubview(titleView)
             contentView.addSubview(dateLabel)
             contentView.addSubview(timeLabel)
+            
+            titleView.userInteractionEnabled = true
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ListEntryCell.didTapOnText))
+            
+            titleView.addGestureRecognizer(tapGesture)
         }
         
         let xOffset = frame.width - layout.timeStampWidth - layout.textViewPadding
@@ -118,6 +105,12 @@ class ListEntryCell: UITableViewCell, UITextViewDelegate {
         timeLabel.frame = CGRect(x: xOffset, y: frame.height / 2, w: layout.timeStampWidth, h: layout.timeStampHeight)
     }
     
+    var textRect: CGRect {
+        get {
+            return convertRect(titleView.frame, toView: self)
+        }
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -125,23 +118,8 @@ class ListEntryCell: UITableViewCell, UITextViewDelegate {
         key = ""
     }
     
-    func textViewDidChange(textView: UITextView) {
-        updateTextView()
-        delegate?.didUpdateDescriptionForCellAtIndexPath(indexPath!, textView: textView, text: textView.text)
-    }
-    
-    func textViewDidBeginEditing(textView: UITextView) {
-        delegate?.didBeginEditing(textView)
-    }
-    
-    private func updateTextView() {
-        let size = titleView.sizeThatFits(CGSizeMake(CGRectGetWidth(titleView.bounds), CGFloat(MAXFLOAT)))
-        
-        var topoffset = (titleView.bounds.size.height - size.height * titleView.zoomScale) / 2.0
-        
-        topoffset = topoffset < 0.0 ? 0.0 : topoffset
-        
-        titleView.contentOffset = CGPointMake(0, -topoffset)
+    func didTapOnText() {
+        delegate?.requestEditing(titleView, indexPath: indexPath!)
     }
 }
 

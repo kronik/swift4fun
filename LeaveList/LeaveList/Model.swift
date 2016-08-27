@@ -34,7 +34,7 @@ public class Model {
         var config = Realm.Configuration(
             schemaVersion: realmDbSchemaVersion,
             migrationBlock: {(migration: Migration, oldSchemaVersion: UInt64) in
-                if oldSchemaVersion < 1 { }
+                if oldSchemaVersion < 1 { }                
             }
         )
     

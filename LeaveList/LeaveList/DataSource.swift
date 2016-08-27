@@ -17,11 +17,13 @@ protocol DataSource {
     func clean()
     func updateKeyword(keyword: String)
     func addRecord(description: String, date: NSDate)
+    func updateDescriptionForEntry(listEntry: ListEntry, text: String)
 }
 
 protocol DataSourceDelegate {
     func didChangeRecord(record: ListEntry)
     func didFinishReloading()
+    func requestEditing(record: ListEntry, cell: ListEntryCell)
 }
 
 class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
@@ -45,7 +47,7 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
     private var reloadTimer: NSTimer?
     private var saveTimer: NSTimer?
     
-    private var lastTextView: UITextView?
+//    private var lastTextView: UITextView?
     private var requestKeyboard = false
     
     var delegate: DataSourceDelegate?
@@ -212,14 +214,11 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
 //        lastTextView?.resignFirstResponder()
     }
     
-    func didUpdateDescriptionForCellAtIndexPath(indexPath: NSIndexPath, textView: UITextView, text: String) {
-        tableView?.beginUpdates()
-        
-        let listEntryKey = items![indexPath.row].key
+    func updateDescriptionForEntry(listEntry: ListEntry, text: String) {
+        let listEntryKey = listEntry.key
         
         saveTimer?.invalidate()
         
-        lastTextView = textView
         dataCache[listEntryKey] = text
         
         let userInfo = ["key": listEntryKey, "text": text]
@@ -227,11 +226,13 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
         saveTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self,
                                                            selector: #selector(TableViewDataSource.onSaveTimer(_:)),
                                                            userInfo: userInfo, repeats: false)
-        tableView?.endUpdates()
     }
     
-    func didBeginEditing(textView: UITextView) {
-        lastTextView = textView
+    func requestEditing(textLabel: UILabel, indexPath: NSIndexPath) {
+        let listEntry = items![indexPath.row]
+        let cell = tableView(tableView!, cellForRowAtIndexPath: indexPath) as! ListEntryCell
+        
+        delegate?.requestEditing(listEntry, cell: cell)
     }
     
     func onSaveTimer(timer: NSTimer) {
@@ -246,6 +247,8 @@ class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource,
         Model.save(listEntry)
         
         delegate?.didChangeRecord(listEntry)
+        
+        reload()
     }
 
     func addRecord(description: String, date: NSDate) {
