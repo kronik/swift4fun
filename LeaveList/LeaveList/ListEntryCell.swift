@@ -8,7 +8,6 @@
 
 import UIKit
 import DateTools
-import Then
 
 protocol ListEntryCellDelegate {
     func requestEditing(textLabel: UILabel, indexPath: NSIndexPath)
@@ -22,29 +21,37 @@ class ListEntryCell: UITableViewCell {
         return ceil(max(size.height + layout.textViewPadding * 2 , layout.tableViewCellHeight))
     }
     
-    let titleView = UILabel().then {
-        $0.backgroundColor = UIColor.clearColor()
-        $0.font = UIFont.systemFontOfSize(layout.textSize)
-        $0.textAlignment = .Left
-        $0.textColor = UIColor.darkGrayColor()
-        $0.autoresizesSubviews = false
-        $0.autoresizingMask = .None
-        $0.numberOfLines = 0
-        $0.lineBreakMode = .ByWordWrapping
-    }
+    var titleView: UILabel = {
+        let label = UILabel()
+        
+        label.backgroundColor = UIColor.clearColor()
+        label.font = UIFont.systemFontOfSize(layout.textSize)
+        label.textAlignment = .Left
+        label.textColor = UIColor.darkGrayColor()
+        label.autoresizesSubviews = false
+        label.autoresizingMask = .None
+        label.numberOfLines = 0
+        label.lineBreakMode = .ByWordWrapping
+        
+        return label
+    }()
     
-    private let dateLabel = UILabel().then {
-        $0.backgroundColor = UIColor.clearColor()
-        $0.font = UIFont.systemFontOfSize(layout.smallTextSize)
-        $0.textAlignment = .Center
-        $0.textColor = UIColor.darkGrayColor()
-    }
+    private var dateLabel: UILabel = {
+        let label = UILabel()
+
+        label.backgroundColor = UIColor.clearColor()
+        label.font = UIFont.systemFontOfSize(layout.smallTextSize)
+        label.textAlignment = .Center
+        label.textColor = UIColor.darkGrayColor()
+        
+        return label
+    }()
     
     private let timeLabel = UILabel().then {
-        $0.backgroundColor = UIColor.clearColor()
-        $0.font = UIFont.systemFontOfSize(layout.smallTextSize)
-        $0.textAlignment = .Center
-        $0.textColor = UIColor.darkGrayColor()
+        label.backgroundColor = UIColor.clearColor()
+        label.font = UIFont.systemFontOfSize(layout.smallTextSize)
+        label.textAlignment = .Center
+        label.textColor = UIColor.darkGrayColor()
     }
     
     private var isInitialised = false

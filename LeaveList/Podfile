@@ -12,7 +12,6 @@ target 'LeaveList' do
   pod 'DynamicButton'
   pod 'DateTools'      # Datetime heavy lifting
   pod 'EZSwiftExtensions'
-  pod 'Then'
   pod 'Keyboardy'
   pod 'SwiftLocation'
   pod 'DeepLinkKit'

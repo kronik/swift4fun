@@ -4,7 +4,7 @@ PODS:
   - DeepLinkKit (1.2.1)
   - Dispatch (0.9.8)
   - DynamicButton (2.1.0)
-  - EZSwiftExtensions (1.5)
+  - EZSwiftExtensions (1.6)
   - Keyboardy (0.1.1)
   - LMDistanceCalculator (1.0.0)
   - Realm (1.0.2):
@@ -12,8 +12,7 @@ PODS:
   - Realm/Headers (1.0.2)
   - RealmSwift (1.0.2):
     - Realm (= 1.0.2)
-  - SwiftLocation (1.0.0)
-  - Then (1.0.3)
+  - SwiftLocation (1.0.5)
 
 DEPENDENCIES:
   - Appz
@@ -27,7 +26,6 @@ DEPENDENCIES:
   - Realm
   - RealmSwift
   - SwiftLocation
-  - Then
 
 SPEC CHECKSUMS:
   Appz: 8310129e6fe178e844f20894ef397291bcedd87e
@@ -35,14 +33,13 @@ SPEC CHECKSUMS:
   DeepLinkKit: 4c3a713b7ecc6c6e25ba56c87d0c728f6035a9ef
   Dispatch: e50365aed43f63169a851184a0b91f72f8d4897e
   DynamicButton: 08c809fdee3c4feb34a20beeba64c069a529d176
-  EZSwiftExtensions: fe78d7d4ac34f5c8c36415d4acee49ba67c9732a
+  EZSwiftExtensions: 6c5e29ae473b3d2edbf5472eab0a3d7bdb20215c
   Keyboardy: 73ce93cedc45f60ef21a463bc713893772034ea3
   LMDistanceCalculator: 416142ff64f89f3043a83321ac90ff6abb7fea87
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
-  SwiftLocation: b01455c5ff67ac66b0696b70ca9d29bda646ec5a
-  Then: c2502b763132c80dfa64d325065d70c45e2d48ca
+  SwiftLocation: 310142ddfcfc1df770b05ee762592f6ee9896cee
 
-PODFILE CHECKSUM: 09a0c0aa5bf7c36214bcbc8290ba7b6c193a49b2
+PODFILE CHECKSUM: 7ce1bbd142194b79074e4a29f0de2d2d9339a34d
 
 COCOAPODS: 1.0.1
